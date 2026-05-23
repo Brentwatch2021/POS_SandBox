@@ -5,3 +5,6 @@ obj/
 .vs/
 dist/
 *.dbmdl
+*.jtfm
+*.ssmssqlproj.user
+*.log
