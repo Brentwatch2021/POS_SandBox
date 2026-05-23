@@ -4,3 +4,4 @@ obj/
 .env
 .vs/
 dist/
+*.dbmdl
