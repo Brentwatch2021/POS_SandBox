@@ -8,7 +8,7 @@ namespace POS.API.Controllers
     {
         private static readonly string[] Summaries = new[]
         {
-            "Freezing", "Bracing Kinda", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+            "Freezing Kinda", "Bracing Kinda", "Chilly Kinda", "Cool Kinda", "Mild Kinda", "Warm Kinda", "Balmy Kinda", "Hot Kinda", "Sweltering Kinda", "Scorching Kinda"
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
