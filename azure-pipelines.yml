@@ -28,3 +28,12 @@ steps:
 
 - publish: $(Build.ArtifactStagingDirectory)
   artifact: drop
+
+- task: AzureWebApp@1
+  displayName: Deploy to Azure App Service
+  inputs:
+    azureSubscription: 'pos-dev-bb-service'
+    appType: 'webApp'
+    appName: 'possandboxbb'
+    package: '$(Build.ArtifactStagingDirectory)'
+  
