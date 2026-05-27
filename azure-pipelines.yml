@@ -15,25 +15,25 @@ steps:
     version: '8.x'
 
 # RESTORE (IMPORTANT: point to API project)
-- script: dotnet restore Backend/POS.API/POS.API.csproj
-  displayName: Restore
+#- script: dotnet restore Backend/POS.API/POS.API.csproj
+#  displayName: Restore
 
 # BUILD
-- script: dotnet build Backend/POS.API/POS.API.csproj --configuration $(buildConfiguration)
-  displayName: Build
+#- script: dotnet build Backend/POS.API/POS.API.csproj --configuration $(buildConfiguration)
+#  displayName: Build
 
 # PUBLISH
-- script: dotnet publish Backend/POS.API/POS.API.csproj --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)
-  displayName: Publish
+#- script: dotnet publish Backend/POS.API/POS.API.csproj --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)
+# displayName: Publish
 
-- publish: $(Build.ArtifactStagingDirectory)
-  artifact: drop
+#- publish: $(Build.ArtifactStagingDirectory)
+#  artifact: drop
 
-- task: AzureWebApp@1
-  displayName: Deploy to Azure App Service
-  inputs:
-    azureSubscription: 'pos-dev-bb-service'
-    appType: 'webApp'
-    appName: 'possandboxbb'
-    package: '$(Build.ArtifactStagingDirectory)'
-  
+#- task: AzureWebApp@1
+#  displayName: Deploy to Azure App Service
+#  inputs:
+#    azureSubscription: 'pos-dev-bb-service'
+#    appType: 'webApp'
+#    appName: 'possandboxbb'
+#    package: '$(Build.ArtifactStagingDirectory)'
+#  
