@@ -57,8 +57,16 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Tables" />
+    <Folder Include="Scripts" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Product.sql" />
+    <Build Include="Tables\pos_Store.sql" />
+    <Build Include="Tables\pos_User.sql" />
+    <Build Include="Tables\pos_Role.sql" />
+    <Build Include="Tables\pos_UserRole.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\1. Auth Tables and Seed Data.sql" />
   </ItemGroup>
 </Project>
