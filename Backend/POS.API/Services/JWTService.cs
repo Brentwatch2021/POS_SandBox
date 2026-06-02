@@ -24,7 +24,8 @@ namespace POS.API.Services
             {
                 new Claim(JwtRegisteredClaimNames.NameId, user.UserId.ToString()),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email_Username),
-                // new Claim(ClaimTypes.Role, role),
+                new Claim(JwtRegisteredClaimNames.Name, user.Fullname),
+                new Claim("StoreId", user.StoreId.ToString()),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));

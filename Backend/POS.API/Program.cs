@@ -7,6 +7,21 @@ using POS.API.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReact",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:5173")
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
+
+
+
+
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -55,6 +70,8 @@ app.UseSwaggerUI();
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
+
+app.UseCors("AllowReact");
 
 app.UseAuthorization();
 

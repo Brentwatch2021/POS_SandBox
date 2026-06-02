@@ -23,7 +23,7 @@ namespace POS.API.Repositories
             using var conn = _factory.CreateConnection();
             await conn.OpenAsync();
 
-            using var cmd = new SqlCommand(@"SELECT TOP 1 UserId, StoreID, PasswordHash
+            using var cmd = new SqlCommand(@"SELECT TOP 1 UserId, StoreID, FullName, PasswordHash
                                                FROM [dbo].[pos_User]
                                               WHERE Username = @Username", conn);
 
@@ -38,6 +38,8 @@ namespace POS.API.Repositories
             {
                 Email_Username = email_UserName,
                 UserId = reader.GetInt32(reader.GetOrdinal("UserId"))!,
+                StoreId = reader.GetInt32(reader.GetOrdinal("StoreId"))!,
+                Fullname = reader["FullName"].ToString()!,
                 PasswordHash = reader["PasswordHash"]?.ToString()
             };
         }
