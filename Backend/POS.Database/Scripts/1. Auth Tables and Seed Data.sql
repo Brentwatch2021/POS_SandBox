@@ -1,4 +1,47 @@
-﻿/* =========================================
+﻿CREATE TABLE pos_Store (
+  [StoreId]               INT             IDENTITY    (1, 1)      PRIMARY KEY,
+  [StoreName]             NVARCHAR(200)   NOT NULL    CONSTRAINT DF_Store_StoreName       DEFAULT '',
+  [StoreLocation]         NVARCHAR(255),
+  [IsStoreActive]         BIT             NOT NULL CONSTRAINT DF_pos_Store_IsStoreActive      DEFAULT 1,
+  [StoreCreatedAt]        DateTime        NOT NULL CONSTRAINT DF_pos_Store_StoreCreatedAt     DEFAULT GetUTCDate()
+);
+go
+
+CREATE TABLE pos_User (
+    [UserId]                INT             IDENTITY    (1, 1)      PRIMARY KEY,
+    [StoreID]               INT             NOT NULL,
+    [Username]              NVARCHAR(50)    NOT NULL UNIQUE,
+    [PasswordHash]          VARCHAR(255)    NOT NULL CONSTRAINT DF_pos_User_PasswordHash  DEFAULT '',
+    [FullName]              NVARCHAR(100)   NOT NULL,
+    [IsUserActive]          BIT             NOT NULL CONSTRAINT DF_pos_User_IsUserActive  DEFAULT 1,
+    [UserCreatedAt]         DATETIME        NOT NULL CONSTRAINT DF_pos_User_UserCreatedAt DEFAULT GETUTCDATE(),
+    CONSTRAINT              FK_Users_Store  FOREIGN KEY (StoreId)                         REFERENCES pos_Store(StoreId)
+);
+go
+
+CREATE TABLE pos_Role (
+    [RoleId]                INT             IDENTITY    (1, 1)      PRIMARY KEY,
+    [RoleName]              NVARCHAR(50)    NOT NULL, -- Cashier / Manager
+    [IsRoleActive]          BIT             NOT NULL CONSTRAINT DF_pos_Role_IsRoleActive DEFAULT 1,
+    [RoleCreatedAt]         DATETIME        NOT NULL CONSTRAINT DF_pos_Role_RoleCreatedAt DEFAULT    GETUTCDATE(),
+);
+go
+
+CREATE TABLE pos_UserRole (
+    [UserID]                INT NOT NULL,
+    [RoleID]                INT NOT NULL,
+    PRIMARY KEY             (UserId, RoleId),
+    [AssignedAt]            DATETIME        NOT NULL CONSTRAINT DF_pos_UserRole_AssignedAt DEFAULT GETUTCDATE(),
+    CONSTRAINT FK_pos_UserRole_pos_User     FOREIGN KEY (UserId) REFERENCES pos_User(UserId),
+    CONSTRAINT FK_pos_UserRoles_pos_Role    FOREIGN KEY (RoleId) REFERENCES pos_Role(RoleId)
+);
+go
+
+
+select * 
+  from [dbo].[pos_User]
+
+/* =========================================
    INSERT STORES
 ========================================= */
 
@@ -276,7 +319,6 @@ BEGIN
             StoreId,
             Username,
             FullName,
-            PasswordHash,
             IsUserActive,
             UserCreatedAt
         )
@@ -285,7 +327,6 @@ BEGIN
             @CurrentStoreId,
             @Username,
             @FullName,
-            HASHBYTES('SHA2_256', 'password'),
             1,
             GETUTCDATE()
         );
@@ -362,7 +403,6 @@ BEGIN
             StoreId,
             Username,
             FullName,
-            PasswordHash,
             IsUserActive,
             UserCreatedAt
         )
@@ -371,7 +411,6 @@ BEGIN
             @CurrentStoreId,
             @Username,
             @FullName,
-            HASHBYTES('SHA2_256', 'password'),
             1,
             GETUTCDATE()
         );
@@ -400,3 +439,11 @@ BEGIN
 END;
 
 GO
+
+
+
+
+
+
+
+
