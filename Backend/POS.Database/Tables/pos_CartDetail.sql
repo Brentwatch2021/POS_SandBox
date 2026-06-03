@@ -1,6 +1,7 @@
 CREATE TABLE [dbo].[pos_CartDetail] (
     [CartDetailId]                  BIGINT  IDENTITY (1, 1) PRIMARY KEY,
     [CartMasterId]                  BIGINT  NULL,
+    [UserId]                        INT     NOT NULL,
     [StockMasterId]                 INT     NOT NULL,
     [CartDetailStatusId]            TinyInt NOT NULL,
     [CartDetailStatus]              AS CASE [CartDetailStatusId]
@@ -14,7 +15,7 @@ CREATE TABLE [dbo].[pos_CartDetail] (
     [DiscountAmount]                MONEY   NOT NULL,
     [VatAmount]                     MONEY   NOT NULL CONSTRAINT DF_pos_CartDetail_VatAmount DEFAULT 0,
     [LineTotal]                     MONEY   NOT NULL,
-    CONSTRAINT FK_CartDetail_CartMaster FOREIGN KEY (CartMasterId) REFERENCES pos_CartMaster(CartMasterId),
-    CONSTRAINT FK_CartDetail_StockMaster FOREIGN KEY (StockMasterId) REFERENCES pos_StockMaster(StockMasterId)
+    CONSTRAINT FK_CartDetail_StockMaster FOREIGN KEY (StockMasterId) REFERENCES pos_StockMaster(StockMasterId),
+    CONSTRAINT FK_CartDetail_Users FOREIGN KEY (UserId) REFERENCES pos_User(UserId)
 );
 GO
