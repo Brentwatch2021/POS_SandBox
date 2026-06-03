@@ -1,6 +1,6 @@
 CREATE TABLE [dbo].[pos_CartDetail] (
     [CartDetailId]                  BIGINT  IDENTITY (1, 1) PRIMARY KEY,
-    [CartMasterId]                  BIGINT  NOT NULL,
+    [CartMasterId]                  BIGINT  NULL,
     [StockMasterId]                 INT     NOT NULL,
     [CartDetailStatusId]            TinyInt NOT NULL,
     [CartDetailStatus]              AS CASE [CartDetailStatusId]
