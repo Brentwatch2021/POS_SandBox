@@ -60,11 +60,16 @@
     <Folder Include="Scripts" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Tables\Product.sql" />
     <Build Include="Tables\pos_Store.sql" />
     <Build Include="Tables\pos_User.sql" />
     <Build Include="Tables\pos_Role.sql" />
     <Build Include="Tables\pos_UserRole.sql" />
+    <Build Include="Tables\pos_CartDetail.sql" />
+    <Build Include="Tables\pos_CartMaster.sql" />
+    <Build Include="Tables\pos_Payment.sql" />
+    <Build Include="Tables\pos_PaymentMethodType.sql" />
+    <Build Include="Tables\pos_StockLedger.sql" />
+    <Build Include="Tables\pos_StockMaster.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\1. Auth Tables and Seed Data.sql" />
