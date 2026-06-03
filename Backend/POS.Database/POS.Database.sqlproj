@@ -58,6 +58,8 @@
     <Folder Include="Properties" />
     <Folder Include="Tables" />
     <Folder Include="Scripts" />
+    <Folder Include="Stored Procedures" />
+    <Folder Include="Functions" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\pos_Store.sql" />
@@ -70,6 +72,11 @@
     <Build Include="Tables\pos_PaymentMethodType.sql" />
     <Build Include="Tables\pos_StockLedger.sql" />
     <Build Include="Tables\pos_StockMaster.sql" />
+    <Build Include="Functions\pos_fn_GetCheckout.sql" />
+    <Build Include="Functions\pos_fn_GetStoreStockMasters.sql" />
+    <Build Include="Stored Procedures\pos_RemoveItemToCart.sql" />
+    <Build Include="Stored Procedures\pos_ProcessSale.sql" />
+    <Build Include="Stored Procedures\pos_AddItemToCart.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\1. Auth Tables and Seed Data.sql" />
