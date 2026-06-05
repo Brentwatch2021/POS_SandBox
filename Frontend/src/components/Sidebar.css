@@ -1,0 +1,71 @@
+.sidebar {
+  width: 220px;
+  min-width: 72px;
+  background: linear-gradient(180deg, #ffffff, #f8fbff);
+  border-right: 1px solid rgba(15,23,42,0.04);
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  box-shadow: 8px 0 24px rgba(2,6,23,0.03);
+  transition: width 220ms ease, transform 220ms ease;
+}
+
+.sidebar.collapsed { width: 72px; }
+
+.sidebar .brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 6px;
+}
+
+.logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: linear-gradient(135deg,#2563eb,#06b6d4);
+  color: white;
+  display:flex;align-items:center;justify-content:center;font-weight:700;
+}
+
+.brand-name { color: #0f172a; font-weight:700; }
+
+.collapse-btn {
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  color: #475569;
+  cursor: pointer;
+}
+
+.menu { margin-top: 14px; display:flex;flex-direction:column; gap:8px; }
+
+.menu-item {
+  display:flex;align-items:center;gap:12px;padding:10px;border-radius:10px;color:#0f172a;cursor:pointer;position:relative;
+}
+.menu-item:hover { background: rgba(37,99,235,0.06); color:#0f172a; transform: translateX(4px); }
+.menu-item .icon { color: #2563eb; display:flex;align-items:center;justify-content:center; }
+.menu-item .label { font-size:0.95rem }
+.menu-item .badge { position:absolute; right:12px; background:#ef4444;color:white;padding:4px 8px;border-radius:999px;font-size:0.75rem }
+
+.sidebar-footer { margin-top:auto;padding:8px;color:#64748b }
+
+.cart-drawer {
+  position: fixed;
+  left: -360px;
+  top: 72px;
+  width: 320px;
+  height: calc(100% - 96px);
+  background: white;
+  border-radius: 0 14px 14px 0;
+  box-shadow: 12px 24px 48px rgba(2,6,23,0.12);
+  transition: left 260ms ease;
+  z-index: 1200;
+  display:flex;flex-direction:column;overflow:hidden;
+}
+.cart-drawer.open { left: 12px }
+.cart-header { padding:16px;border-bottom:1px solid rgba(15,23,42,0.04);display:flex;justify-content:space-between;align-items:center }
+.cart-body { padding:16px;flex:1;overflow:auto }
+.cart-footer { padding:16px;border-top:1px solid rgba(15,23,42,0.04) }
+.close { background:transparent;border:none;font-size:16px;cursor:pointer }
+.primary { background:#2563eb;border:none;color:white;padding:10px 12px;border-radius:8px;cursor:pointer }

@@ -20,7 +20,7 @@ namespace POS.API.Services
         {
             var jwtSettings = _configuration.GetSection("Jwt");
 
-            var claims = new[]
+            var claims = new List<Claim>()
             {
                 new Claim(JwtRegisteredClaimNames.NameId, user.UserId.ToString()),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email_Username),
@@ -28,6 +28,12 @@ namespace POS.API.Services
                 new Claim("StoreId", user.StoreId.ToString()),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
+            // loop through roles on user and add them as claims
+            foreach (var role in user.Roles)
+            {
+               claims.Add(new Claim(ClaimTypes.Role, role));
+            }
+
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

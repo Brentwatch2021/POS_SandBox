@@ -80,5 +80,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\1. Auth Tables and Seed Data.sql" />
+    <None Include="Scripts\Seed_Stock.sql" />
   </ItemGroup>
 </Project>

@@ -4,6 +4,7 @@ using POS.API.Data;
 using POS.API.Repositories;
 using POS.API.Services;
 using POS.API.Services.Interfaces;
+using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,9 +18,6 @@ builder.Services.AddCors(options =>
                   .AllowAnyMethod();
         });
 });
-
-
-
 
 
 // Add services to the container.
@@ -47,7 +45,8 @@ builder.Services.AddAuthentication(options =>
         ValidIssuer = jwtSettings["Issuer"],
         ValidAudience = jwtSettings["Audience"],
         IssuerSigningKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(key),
-        ClockSkew = TimeSpan.Zero
+        ClockSkew = TimeSpan.Zero,
+        RoleClaimType = ClaimTypes.Role
     };
 });
 

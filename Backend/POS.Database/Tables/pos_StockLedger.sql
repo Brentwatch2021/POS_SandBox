@@ -5,7 +5,7 @@ CREATE TABLE [dbo].[pos_StockLedger] (
     [StockMasterMovementType]           AS CASE [StockMasterMovementTypeId]
                                         WHEN 1 THEN 'Sale'
                                         WHEN 2 THEN 'Void'
-                                        WHEN 2 THEN 'GRV'
+                                        WHEN 3 THEN 'GRV'
                                         ELSE 'Unknown'
                                         END,
     [QuantityChange]                    INT NOT NULL,
